@@ -27,7 +27,6 @@ jobs:
             ^synced-add-issues-to-board\.yaml$
           TARGET_REPOS: |-
             windpioneers/gdal-python
-            windpioneers/gdal-python
             windpioneers/power-curve-utilities
             windpioneers/power-loss
             windpioneers/pre-commit-hooks
