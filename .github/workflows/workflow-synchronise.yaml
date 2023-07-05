@@ -24,7 +24,7 @@ jobs:
         uses: adrianjost/files-sync-action@master
         with:
           COMMIT_MESSAGE: "OPS: Update workflow from windpioneers/.github skipci"
-          GITHUB_TOKEN: ${{ secrets.PROJECT_ISSUES_TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_SYNC_TOKEN_GITHUB }}
           SRC_ROOT: /synced-workflows/
           TARGET_ROOT: /.github/workflows/
           FILE_PATTERNS: |-
