@@ -5,7 +5,11 @@ on:
     branches:
       - main
     paths:
+      # The labels file
       - labels.yml
+      # This workflow
+      - .github/workflows/workflow-synchronise.yaml
+
   workflow_dispatch:
 
 jobs:

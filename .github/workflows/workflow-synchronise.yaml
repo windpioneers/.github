@@ -6,7 +6,11 @@ on:
     branches:
       - main
     paths:
+      # Any synced workflows
       - synced-workflows/*
+      # This workflow
+      - .github/workflows/workflow-synchronise.yaml
+
   workflow_dispatch:
 
 jobs:
