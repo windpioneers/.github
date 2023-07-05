@@ -25,6 +25,7 @@ jobs:
           manifest: labels.yml
           prune: true
           repository: |
+            windpioneers/.github
             windpioneers/gdal-python
             windpioneers/power-curve-utilities
             windpioneers/power-loss

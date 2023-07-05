@@ -30,13 +30,14 @@ jobs:
           FILE_PATTERNS: |-
             ^synced-add-issues-to-board\.yaml$
           TARGET_REPOS: |-
-            windpioneers/gdal-python
-            windpioneers/power-curve-utilities
-            windpioneers/power-loss
-            windpioneers/pre-commit-hooks
-            windpioneers/pywake2-service
-            windpioneers/report-proxy-service
-            windpioneers/wake-service
-            windpioneers/windquest
-            windpioneers/windquest-frontend
-            windpioneers/wrg-tools
+            windpioneers/.github:main
+            windpioneers/gdal-python:main
+            windpioneers/power-curve-utilities:main
+            windpioneers/power-loss:main
+            windpioneers/pre-commit-hooks:main
+            windpioneers/pywake2-service:main
+            windpioneers/report-proxy-service:main
+            windpioneers/wake-service:main
+            windpioneers/windquest:main
+            windpioneers/windquest-frontend:main
+            windpioneers/wrg-tools:main
