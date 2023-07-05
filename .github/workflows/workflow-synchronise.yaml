@@ -1,0 +1,39 @@
+name: Synchronise Workflows
+
+# When a file is changed in this repo, or on manual trigger, sync all workflows to the target repos
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - synced-workflows/*
+  workflow_dispatch:
+
+jobs:
+  workflow_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Sync Workflows
+        uses: adrianjost/files-sync-action@master
+        with:
+          COMMIT_MESSAGE: "OPS: Update workflow from windpioneers/.github skipci"
+          GITHUB_TOKEN: ${{ secrets.PROJECT_ISSUES_TOKEN_GITHUB }}
+          SRC_ROOT: /synced-workflows/
+          TARGET_ROOT: /.github/workflows/
+          FILE_PATTERNS: |-
+            ^synced-add-issues-to-board\.yaml$
+          TARGET_REPOS: |-
+            windpioneers/gdal-python
+            windpioneers/gdal-python
+            windpioneers/power-curve-utilities
+            windpioneers/power-loss
+            windpioneers/pre-commit-hooks
+            windpioneers/pywake2-service
+            windpioneers/report-proxy-service
+            windpioneers/wake-service
+            windpioneers/windquest
+            windpioneers/windquest-frontend
+            windpioneers/wrg-tools

@@ -1,0 +1,36 @@
+name: Sync Labels
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - labels.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Sync Labels
+        uses: micnncim/action-label-syncer@v1
+        with:
+          manifest: labels.yml
+          prune: true
+          repository: |
+            windpioneers/gdal-python
+            windpioneers/gdal-python
+            windpioneers/power-curve-utilities
+            windpioneers/power-loss
+            windpioneers/pre-commit-hooks
+            windpioneers/pywake2-service
+            windpioneers/report-proxy-service
+            windpioneers/wake-service
+            windpioneers/windquest
+            windpioneers/windquest-frontend
+            windpioneers/wrg-tools
+
+          token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
