@@ -52,6 +52,9 @@
 - name: question
   description: Further information is requested
   color: d876e3
+- name: quick win wednesday
+  description: A quick win for us to push through if we have a few minutes before getting back to the big stuff
+  color: 3bb143
 - name: quirk
   description: Quirky UX or styling problems that aren't major but reflect poorly on us
   color: c4bef7
