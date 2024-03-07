@@ -4,6 +4,9 @@
 - name: backend
   description: Related to the back end
   color: f4699e
+- name: blocked
+  description: Work has started but is held up by another issue
+  color: c49e03
 - name: bug
   description: Unintended behaviour in any area of the app
   color: fc2929
