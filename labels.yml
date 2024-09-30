@@ -34,9 +34,6 @@
 - name: duplicate
   description: This issue or pull request already exists
   color: cfd3d7
-- name: epic
-  description: Contains links to a collection of issues
-  color: cc00ff
 - name: feature
   description: A new feature of the app
   color: 84b6eb
