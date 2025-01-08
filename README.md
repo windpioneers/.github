@@ -11,6 +11,9 @@ Some general rules that we stick to when using GitHub
 - Repositories are named using `kebab-case` conventions to reduce friction when collaborating with others or setting up build scripts
 - Repositories should have meaningful names with a subject/area, as well as an indicator of function/purpose, eg `wake-service` is a webservice (function/purpose) to calculate wake interactions (the subject/area), `windquest-frontend` is part of the windquest group of apps.
 
+### Best practices
+- It's your responsibility to keep devcontainers, dev tooling and CI/CD workflows up to date for your repositories. You can see (and add to yourself) some best practices on [python libraries and applications](https://github.com/orgs/octue/discussions/categories/python-libraries-and-applications), [semantic versioning](https://github.com/orgs/octue/discussions/categories/semantic-versioning) and [Terraform / IAC](https://github.com/orgs/octue/discussions/categories/terraform-infrastructure-as-code).
+
 ### Code style rules 
 - All repositories should use the [`prettier` formatter](https://prettier.io/) (to consistently format general html, markdown, rst, json files and more)
 - Python repositories should conform to the [`black` style guide](https://black.readthedocs.io/)
