@@ -8,7 +8,7 @@ WindPioneers repositories.
 Some general rules that we stick to when using GitHub
 
 ### Repository naming
-- Repositories are named using `kebab-case` conventions
+- Repositories are named using `kebab-case` conventions to reduce friction when collaborating with others or setting up build scripts
 - Repositories should have meaningful names with a subject/area, as well as an indicator of function/purpose, eg `wake-service` is a webservice (function/purpose) to calculate wake interactions (the subject/area), `windquest-frontend` is part of the windquest group of apps.
 
 ### Code style rules 
