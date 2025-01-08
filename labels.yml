@@ -40,6 +40,9 @@
 - name: frontend
   description: Related to the front end
   color: 59e5c4
+- name: gis
+  description: Related to GIS strategy or process
+  color: 00FFFF
 - name: good first issue
   description: A good first issue for new or junior developers
   color: 7de819
