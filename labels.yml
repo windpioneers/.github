@@ -2,7 +2,7 @@
   description: Creating or updating github actions
   color: fcba03
 - name: architecture
-  description: Requires substantive thought re. the API and architecture of the codebase
+  description: Requires substantive thought about the API or architecture of the codebase
   color: edce74
 - name: backend
   description: Related to the back end
