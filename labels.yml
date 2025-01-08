@@ -1,6 +1,9 @@
 - name: actions
   description: Creating or updating github actions
   color: fcba03
+- name: architecture
+  description: Requires substantive thought re. the API and architecture of the codebase
+  color: edce74
 - name: backend
   description: Related to the back end
   color: f4699e
@@ -42,7 +45,7 @@
   color: 59e5c4
 - name: gis
   description: Related to GIS strategy or process
-  color: 00FFFF
+  color: 00ffff
 - name: good first issue
   description: A good first issue for new or junior developers
   color: 7de819
