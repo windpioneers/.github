@@ -8,7 +8,7 @@ on:
       # The labels file
       - labels.yml
       # This workflow
-      - .github/workflows/workflow-synchronise.yaml
+      - .github/workflows/sync-labels.yaml
 
   workflow_dispatch:
 
@@ -26,15 +26,64 @@ jobs:
           prune: true
           repository: |
             windpioneers/.github
+            windpioneers/curtailments-json-generator
+            windpioneers/design-scape
+            windpioneers/django-applications
+            windpioneers/django-maxwell
+            windpioneers/era5-download
+            windpioneers/extremes
             windpioneers/gdal-python
+            windpioneers/holland-model
+            windpioneers/kmz-inspection
+            windpioneers/mail-attachment-downloader
+            windpioneers/maxwell-client
+            windpioneers/maxwell-infrastructure
+            windpioneers/merra2-processor
+            windpioneers/ncar-downloader
+            windpioneers/ncar-job-utility
+            windpioneers/netcdf-splitter
+            windpioneers/plotter-tool
+            windpioneers/plumber-service
             windpioneers/power-curve-utilities
-            windpioneers/power-loss
+            windpioneers/power-loss-service
             windpioneers/pre-commit-hooks
-            windpioneers/pywake2-service
+            windpioneers/pywake-service
+            windpioneers/pywasp
+            windpioneers/reanalysis-downloader
+            windpioneers/reanalysis-downloader-api
+            windpioneers/reanalysis-processor
             windpioneers/report-proxy-service
+            windpioneers/roughness-service
+            windpioneers/service-infrastructure-bootstrap
+            windpioneers/sunniness
             windpioneers/wake-service
+            windpioneers/wind-whiz
+            windpioneers/windpark-summary-scripts
             windpioneers/windquest
             windpioneers/windquest-frontend
+            windpioneers/windquest-infrastructure
+            windpioneers/windquest-input-checker
+            windpioneers/windquest-load-tester
+            windpioneers/windscribe-boundary
+            windpioneers/windscribe-configurations
+            windpioneers/windscribe-constraints
+            windpioneers/windscribe-downscaling
+            windpioneers/windscribe-measurements
+            windpioneers/windscribe-output-kml
+            windpioneers/windscribe-raster
+            windpioneers/windscribe-reanalysis-processing
+            windpioneers/windscribe-scoring
+            windpioneers/windscribe-terrain
+            windpioneers/windscribe-wind-map-calibration
+            windpioneers/windscribe-wind-map-blender
+            windpioneers/windsync
+            windpioneers/windsync-api
+            windpioneers/windsync-era-job
+            windpioneers/windsync-merra-job
+            windpioneers/wp-public
+            windpioneers/wp-sdk-python
+            windpioneers/wq-input-handler
+            windpioneers/wrass-processor
             windpioneers/wrg-tools
 
           token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
