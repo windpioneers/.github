@@ -9,7 +9,7 @@ Some general rules that we stick to when using GitHub
 
 ### Repository naming
 - Repositories are named using `kebab-case` conventions
-- Repositories should have meaningful names with a subject/area, as well as an indicator of function/purpose, eg `wake-service` is a webservice (funciton/purpose) to calculate wake interactions (the subject/area).
+- Repositories should have meaningful names with a subject/area, as well as an indicator of function/purpose, eg `wake-service` is a webservice (function/purpose) to calculate wake interactions (the subject/area), `windquest-frontend` is part of the windquest group of apps.
 
 ### Code style rules 
 - All repositories should use the [`prettier` formatter](https://prettier.io/) (to consistently format general html, markdown, rst, json files and more)
