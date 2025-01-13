@@ -4,7 +4,7 @@
 - name: architecture
   description: Requires substantive thought about the API or architecture of the codebase
   color: edce74
-- name: assignment: planned
+- name: 'assignment: planned'
   description: Apply if the issue is in the annual plan (eg belongs to technical strategy)
   color: d9d0e2
 - name: 'assignment: reactive'
