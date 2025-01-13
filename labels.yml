@@ -4,6 +4,12 @@
 - name: architecture
   description: Requires substantive thought about the API or architecture of the codebase
   color: edce74
+- name: "assignment: planned"
+  description: Apply if the issue is in the annual plan (eg belongs to technical strategy)
+  color: d9d0e2
+- name: "assignment: reactive"
+  description: Apply if the issue is not in the annual plan (eg spontaneous request from W&S team)
+  color: b09ec2
 - name: backend
   description: Related to the back end
   color: f4699e
@@ -52,6 +58,15 @@
 - name: help wanted
   description: Applied by the assigned developer if they need help
   color: 159818
+- name: "level: formidable"
+  description: Apply if assignee expects significant learning curve, complexity or unknowns
+  color: fce081
+- name: "level: moderate"
+  description: Apply if assignee expects some complexity or may need to check a few things
+  color: fdeaa8
+- name: "level: straightforward"
+  description: Apply if assignee is clear on how to do the issue and expects no problems
+  color: fef4d0
 - name: performance
   description: If you want to run cool, you've got to run on heavy, heavy fuel
   color: 4d4d4d
