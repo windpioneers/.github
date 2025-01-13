@@ -7,7 +7,7 @@
 - name: assignment: planned
   description: Apply if the issue is in the annual plan (eg belongs to technical strategy)
   color: d9d0e2
-- name: "assignment: reactive"
+- name: 'assignment: reactive'
   description: Apply if the issue is not in the annual plan (eg spontaneous request from W&S team)
   color: b09ec2
 - name: backend
