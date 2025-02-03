@@ -13,75 +13,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  get-repos:
+    name: Get Repos
     runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.get-repos.outputs.repos }}
     steps:
-      - name: Checkout
+      - name: Get repository list
+        id: get-repos
+        uses: raven-actions/get-repos@v1
+
+  sync-repo-labels:
+    name: Sync ${{ matrix.repo.name }} labels
+    runs-on: ubuntu-latest
+    needs:
+      - get-repos
+    strategy:
+      matrix:
+        repo: ${{ fromJson(needs.get-repos.outputs.repos) }}
+      fail-fast: false      
+    steps:
+      - name: Display matrix.repo information
+        run: |
+          echo "Archived: ${{ !matrix.repo.archived }}"
+          echo "Repo: ${{ !matrix.repo.full_name }}"
+          
+      - name: Checkout .github repo (containing labels.yml)
+        if: ${{ !matrix.repo.archived }} # Make sure repo is not archived
         uses: actions/checkout@v3
 
-      - name: Sync Labels
+      - name: Sync labels (skip archived)
+        if: ${{ !matrix.repo.archived }} # Make sure repo is not archived
         uses: brpaz/action-label-syncer@0.2.0
         with:
           manifest: labels.yml
           prune: true
+          token: ${{ secrets.LABEL_SYNC_TOKEN }}
           repository: |
-            windpioneers/.github
-            windpioneers/curtailments-json-generator
-            windpioneers/design-scape
-            windpioneers/django-applications
-            windpioneers/django-maxwell
-            windpioneers/era5-download
-            windpioneers/extremes
-            windpioneers/gdal-python
-            windpioneers/holland-model
-            windpioneers/kmz-inspection
-            windpioneers/mail-attachment-downloader
-            windpioneers/maxwell-client
-            windpioneers/maxwell-infrastructure
-            windpioneers/merra2-processor
-            windpioneers/ncar-downloader
-            windpioneers/ncar-job-utility
-            windpioneers/netcdf-splitter
-            windpioneers/plotter-tool
-            windpioneers/plumber-service
-            windpioneers/power-curve-utilities
-            windpioneers/power-loss-service
-            windpioneers/pre-commit-hooks
-            windpioneers/pywake-service
-            windpioneers/pywasp
-            windpioneers/reanalysis-downloader
-            windpioneers/reanalysis-downloader-api
-            windpioneers/reanalysis-processor
-            windpioneers/report-proxy-service
-            windpioneers/roughness-service
-            windpioneers/service-infrastructure-bootstrap
-            windpioneers/sunniness
-            windpioneers/wake-service
-            windpioneers/wind-whiz
-            windpioneers/windpark-summary-scripts
-            windpioneers/windquest
-            windpioneers/windquest-frontend
-            windpioneers/windquest-infrastructure
-            windpioneers/windquest-input-checker
-            windpioneers/windquest-load-tester
-            windpioneers/windscribe-boundary
-            windpioneers/windscribe-configurations
-            windpioneers/windscribe-constraints
-            windpioneers/windscribe-downscaling
-            windpioneers/windscribe-measurements
-            windpioneers/windscribe-output-kml
-            windpioneers/windscribe-raster
-            windpioneers/windscribe-reanalysis-processing
-            windpioneers/windscribe-scoring
-            windpioneers/windscribe-terrain
-            windpioneers/windscribe-wind-map-calibration
-            windpioneers/windscribe-wind-map-blender
-            windpioneers/windsync
-            windpioneers/windsync-api
-            windpioneers/windsync-era-job
-            windpioneers/windsync-merra-job
-            windpioneers/wp-public
-            windpioneers/wp-sdk-python
+            ${{ matrix.repo.full_name }}
+
             windpioneers/wq-input-handler
             windpioneers/wrg-tools
 
