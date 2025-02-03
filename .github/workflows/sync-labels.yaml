@@ -83,7 +83,6 @@ jobs:
             windpioneers/wp-public
             windpioneers/wp-sdk-python
             windpioneers/wq-input-handler
-            windpioneers/wrass-processor
             windpioneers/wrg-tools
 
           token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
