@@ -48,11 +48,7 @@ jobs:
         with:
           manifest: labels.yml
           prune: true
-          token: ${{ secrets.LABEL_SYNC_TOKEN }}
+          token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
           repository: |
             ${{ matrix.repo.full_name }}
 
-            windpioneers/wq-input-handler
-            windpioneers/wrg-tools
-
-          token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
