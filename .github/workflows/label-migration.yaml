@@ -1,18 +1,18 @@
-name: Label Migration
+name: Label migration
 
 on:
   workflow_dispatch:
     inputs:
       input_label:
-        description: 'Label to search for on issues/PRs'
+        description: "Input label (select issues/PRs with this label)"
         required: true
         type: string
       output_label:
-        description: 'Label to add to matching issues/PRs'
+        description: "Output label (add to selected issues/PRs)"
         required: true
         type: string
       mode:
-        description: 'ADD = add output label, REPLACE = add output and remove input'
+        description: "ADD = add output label, REPLACE = add output and remove input"
         required: true
         type: choice
         options:

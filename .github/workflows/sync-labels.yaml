@@ -1,4 +1,4 @@
-name: Sync Labels
+name: Sync labels
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
       - name: Get repository list
         id: get-repos
         uses: raven-actions/get-repos@v1
-        with: 
+        with:
           github-token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
 
   sync-repo-labels:
@@ -33,13 +33,13 @@ jobs:
     strategy:
       matrix:
         repo: ${{ fromJson(needs.get-repos.outputs.repos) }}
-      fail-fast: false      
+      fail-fast: false
     steps:
       - name: Display matrix.repo information
         run: |
           echo "Archived: ${{ !matrix.repo.archived }}"
           echo "Repo: ${{ !matrix.repo.full_name }}"
-          
+
       - name: Checkout .github repo (containing labels.yml)
         if: ${{ !matrix.repo.archived }} # Make sure repo is not archived
         uses: actions/checkout@v3
@@ -53,4 +53,3 @@ jobs:
           token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
           repository: |
             ${{ matrix.repo.full_name }}
-
