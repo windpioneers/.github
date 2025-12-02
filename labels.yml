@@ -75,7 +75,7 @@
   color: 4d4d4d
 - name: qualified
   description: Apply to an epic when it is fully qualified (checklist is complete)
-  color: #703ec9
+  color: 703ec9
 - name: question
   description: Further information is requested
   color: d876e3
