@@ -1,6 +1,3 @@
-- name: atest
-  description: A test by tom
-  color: fcba03
 - name: actions
   description: Creating or updating github actions
   color: fcba03
