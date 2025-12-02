@@ -1,0 +1,100 @@
+name: Label Migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      input_label:
+        description: 'Label to search for on issues/PRs'
+        required: true
+        type: string
+      output_label:
+        description: 'Label to add to matching issues/PRs'
+        required: true
+        type: string
+      mode:
+        description: 'ADD = add output label, REPLACE = add output and remove input'
+        required: true
+        type: choice
+        options:
+          - ADD
+          - REPLACE
+
+jobs:
+  get-repos:
+    name: Get Repos
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.get-repos.outputs.repos }}
+    steps:
+      - name: Get repository list
+        id: get-repos
+        uses: raven-actions/get-repos@v1
+        with:
+          github-token: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
+
+  migrate-labels:
+    name: Migrate labels in ${{ matrix.repo.name }}
+    runs-on: ubuntu-latest
+    needs:
+      - get-repos
+    strategy:
+      matrix:
+        repo: ${{ fromJson(needs.get-repos.outputs.repos) }}
+      fail-fast: false
+    steps:
+      - name: Display migration info
+        run: |
+          echo "Repository: ${{ matrix.repo.full_name }}"
+          echo "Archived: ${{ matrix.repo.archived }}"
+          echo "Input label: ${{ inputs.input_label }}"
+          echo "Output label: ${{ inputs.output_label }}"
+          echo "Mode: ${{ inputs.mode }}"
+
+      - name: Migrate labels
+        if: ${{ !matrix.repo.archived }}
+        env:
+          GH_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN_GITHUB }}
+          REPO: ${{ matrix.repo.full_name }}
+          INPUT_LABEL: ${{ inputs.input_label }}
+          OUTPUT_LABEL: ${{ inputs.output_label }}
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -e
+
+          echo "Processing issues..."
+          ISSUES=$(gh issue list --repo "$REPO" --label "$INPUT_LABEL" --state all --json number --jq '.[].number' 2>/dev/null || echo "")
+
+          for ISSUE in $ISSUES; do
+            echo "Processing issue #$ISSUE"
+
+            # Always add output label first (crash-safe)
+            if ! gh issue edit "$ISSUE" --repo "$REPO" --add-label "$OUTPUT_LABEL"; then
+              echo "::error::Failed to add label '$OUTPUT_LABEL' to issue #$ISSUE. Ensure the label exists by running the sync-labels action first."
+              exit 1
+            fi
+
+            # Remove input label only in REPLACE mode
+            if [ "$MODE" = "REPLACE" ]; then
+              gh issue edit "$ISSUE" --repo "$REPO" --remove-label "$INPUT_LABEL"
+            fi
+          done
+
+          echo "Processing pull requests..."
+          PRS=$(gh pr list --repo "$REPO" --label "$INPUT_LABEL" --state all --json number --jq '.[].number' 2>/dev/null || echo "")
+
+          for PR in $PRS; do
+            echo "Processing PR #$PR"
+
+            # Always add output label first (crash-safe)
+            if ! gh pr edit "$PR" --repo "$REPO" --add-label "$OUTPUT_LABEL"; then
+              echo "::error::Failed to add label '$OUTPUT_LABEL' to PR #$PR. Ensure the label exists by running the sync-labels action first."
+              exit 1
+            fi
+
+            # Remove input label only in REPLACE mode
+            if [ "$MODE" = "REPLACE" ]; then
+              gh pr edit "$PR" --repo "$REPO" --remove-label "$INPUT_LABEL"
+            fi
+          done
+
+          echo "Migration complete for $REPO"
