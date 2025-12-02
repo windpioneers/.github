@@ -13,12 +13,28 @@ about: Create an epic from a set of issues. WP Developers and Product Managers O
 
 <!--- A longer explanation if you wish of the thrust of work in this epic and how that fits into the bigger picture -->
 
-## Contents
+## Qualification
 
-<!--- A checkbox list of each item required. Each item should be a simple link to an issue, or a description of a non-issue item like an activity or workshop. Where the item is a linked issue, use the issue reference rather than a long explanation -->
+<!--- Epics must be qualified before work begins -->
 
-- [ ] #1234
-- [ ] Team meeting
-   - do stuff
-   - more stuff
-- [ ] #2345
+- [ ] End user goal and overview complete.
+
+### Design
+
+- [ ] **Mockups**. Where frontend is involved, add mockups and/or prototypes in the epic or a direct link.
+- [ ] **Data structure**. For cross-service data items, define JSONSchema and link(s) added here.
+- [ ] **Sample data files**. If any data files are involved, these should be added to / linked from the relevant subissues (eg the issues for file readers/writers/storage).
+- [ ] **User Journeys**. Where external users (eg W&S team / GIS team / Clients) will use the feature, user journey flow diagrams must be complete and linked to from here or the relevant subissues.
+- [ ] **Permission charts**. If relevant (eg permissions resources are affected), create or update the relevant permissions chart and link to it from here.
+- [ ] **Workflow definition**. If a background / async workflow is required, add a workflow diagram or text-based definition, placed either directly in a subissue or link it from here.
+
+### Contents
+
+- [ ] For each separate activitiy, there should be a subissue (linked below) made in its relevant repository.
+- [ ] All subissues must be assigned to an individual.
+
+### Review
+- [ ] Review the above as a team and approve.
+
+
+<!--- Once the above list is complete, add the `qualified` label to this epic -->
