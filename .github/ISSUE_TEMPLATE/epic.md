@@ -21,6 +21,8 @@ about: Create an epic from a set of issues. WP Developers and Product Managers O
 
 ### Design
 
+- [ ] **User pain points**. Mention the current user pain points that the epic will solve. Use this to provide context.
+- [ ] **Solving the pain points**. Explain how this epic addresses and resolves the pain points.
 - [ ] **Mockups**. Where frontend is involved, add mockups and/or prototypes in the epic or a direct link.
 - [ ] **Data structure**. For cross-service data items, define JSONSchema and link(s) added here.
 - [ ] **Sample data files**. If any data files are involved, these should be added to / linked from the relevant subissues (eg the issues for file readers/writers/storage).
