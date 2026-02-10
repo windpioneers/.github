@@ -46,7 +46,7 @@
 - name: feature
   description: A new feature of the app
   color: 84b6eb
-- name: flow: use-chromatic
+- name: "flow: use-chromatic"
   description: Run the chromatic check only if the PR has this label
   color: 109e90
 - name: frontend
