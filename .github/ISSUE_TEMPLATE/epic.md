@@ -29,7 +29,7 @@ about: Create an epic from a set of issues. WP Developers and Product Managers O
 - [ ] **User Journeys**. Where external users (eg W&S team / GIS team / Clients) will use the feature, user journey flow diagrams must be complete and linked to from here or the relevant subissues.
 - [ ] **Permission charts**. If relevant (eg permissions resources are affected), create or update the relevant permissions chart and link to it from here.
 - [ ] **Workflow definition**. If a background / async workflow is required, add a workflow diagram or text-based definition, placed either directly in a subissue or link it from here.
-- [ ] **Estimated effort** In tabular format, provide a breakdown of the time required to complete each sub-task or sub-feature in the epic. Note this is high level estimate.
+- [ ] **Estimated effort**. In tabular format, provide a breakdown of the time required to complete each sub-task or sub-feature in the epic. Note this is high level estimate.
 
 ### Contents
 
