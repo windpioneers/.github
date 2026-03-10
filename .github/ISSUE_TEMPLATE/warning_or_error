@@ -1,0 +1,42 @@
+---
+name: Warning or error request
+about: Request a warning or validation to be introduced, to either prevent failures or make it clearer what's happening when failures occur.
+---
+
+# Warning/Error request
+
+<!--
+PLEASE READ! This issue template is for requesting that a warning or validation be added to the Warnings Framework. If an `Exception`, `Calculation Error` or some other unknown error has occurred, *and you don't know why*, raise a *bug report* instead!!! 
+-->
+
+## What problem did you have?
+
+<!--- Describe what you did that caused the problem, and what happened. Link to any resources (like the question in the admin) if possible -->
+
+## What check could we have run on your input, to avoid the problem?
+
+<!--- Describe the check that should be made (including description how we could make that check, if it's wind-and-site specific -->
+
+## What kind and area should it be?
+
+<!--- We need to know the kind of warning/error that should be created, and the area in which this check should be made (ask a WindQuest team member for help if need be) -->
+
+### Terminology
+
+The different kinds of warnings and areas:
+
+| **Kind**                        | **Description**                                                                                                                                                                                                           | **Notes**                                                                                    |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| Exception                       | (NOT FOR USE HERE - RAISE A BUG REPORT!) An unexpected error occured which could not be recovered from. Operation will be incomplete (partial or no results).                                                             | No message indicating the problem is possible - it was unexpected                            |
+| Calculation Error               | An expected error, highlighting that inputs were provided which resulted in an exception, but it was not possible a priori to determine that this would happen and prevent it (ie we could not raise a Validation Error) | A message may come with the error (eg 'Unable to interpolate Wind Map - NaN values present') |
+| Validation Error (hard warning) | An expected error, highlighting that inputs were provided which we determine are not valid (ie are logically impossible or would result in an exception if execution were allowed to continue)                           |                                                                                              |
+| Warning (soft warning)          | Inputs were provided which are logically valid and would not result in an exception, but (through secondary analysis) are deemed to be unwise from an engineering perspective.                                            |                                                                                              |
+| Suggestion                      | Inputs were provided which are logically valid and would not result in an exception, but (through secondary analysis) are deemed to be unwise from an engineering perspective                                             | Consider - collapse into soft warnings but add a severity field                              |
+
+| **Area generated**    | **When can we get access to feedback**                                                                                                                                                                                                                                                                                                                                                            | **Before / After Calculation button click** |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| Scientific services   | Delayed feedback (arises at some point during calculation)                                                                                                                                                                                                                                                                                                                                        | After                                       |
+| Backend workers       | Delayed feedback (arises at some point during calculation)                                                                                                                                                                                                                                                                                                                                        | After                                       |
+| Backend API           | Instantaneous feedback, but only on submission of calculation, not during user design workflows                                                                                                                                                                                                                                                                                                   | After                                       |
+| Frontend async worker | Delayed but fairly rapid feedback during the frontend workflow. It's possible for secondary analysis (eg to determine whether some classes of validation error occur) to run in the frontend as async processes. This means rapid user feedback but without blocking the app render cycle. Example: distance between turbines could be calculated before the layout is submitted for calculation  | Mostly Before                               |
+| Frontend rendering    | Instantaneous feedback during the frontend workflow (Some Errors/Warnings/Suggestions can be made instantly in the frontend, preventing user from continuing. Example: hub height validation errors where hub height less than blade length)                                                                                                                                                      | Before                                      |
