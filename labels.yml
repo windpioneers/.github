@@ -40,6 +40,9 @@
 - name: documentation
   description: Improvements or additions to documentation
   color: 0075ca
+- name: draft
+  description: High level problem and solution alignment is complete and ready for detailed qualification
+  color: bab1e0
 - name: duplicate
   description: This issue or pull request already exists
   color: cfd3d7
